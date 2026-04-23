@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>PictoKit</title>
+        <item>
+            <title>1.0</title>
+            <pubDate>Thu, 23 Apr 2026 21:42:05 +0200</pubDate>
+            <sparkle:version>1</sparkle:version>
+            <sparkle:shortVersionString>1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/bibtor/pictokit-releases/releases/download/v1.0.0/PictoKit-1.0.0.dmg" length="5745969" type="application/octet-stream" sparkle:edSignature="saY9VsYt998CfwfUQsBy6xVqEtNstLN0RFosF8ka2e+uAYX26dTZvlYwAf9meoDmEhOAO8sD8SisUFXnT8omBA=="/>
+        </item>
+    </channel>
+</rss>
