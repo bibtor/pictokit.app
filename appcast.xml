@@ -3,6 +3,14 @@
     <channel>
         <title>PictoKit</title>
         <item>
+            <title>1.0.4</title>
+            <pubDate>Wed, 27 May 2026 20:32:21 +0200</pubDate>
+            <sparkle:version>10</sparkle:version>
+            <sparkle:shortVersionString>1.0.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/bibtor/pictokit-releases/releases/download/v1.0.4/PictoKit-1.0.4.dmg" length="9789057" type="application/octet-stream" sparkle:edSignature="VxXvGJ4U5ZaLN0YgixqBDYXm3aNl3ZSeAOPsvF+QTkpjQglUhu4JB+cxiKBuNGPdTjy+s5M0MfH2Yh3Zah4DAg=="/>
+        </item>
+        <item>
             <title>1.0</title>
             <pubDate>Thu, 23 Apr 2026 21:42:05 +0200</pubDate>
             <sparkle:version>1</sparkle:version>
