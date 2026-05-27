@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — PictoKit</title>
+  <meta name="description" content="PictoKit privacy policy. No analytics, no telemetry, no accounts. All user data stays on your Mac." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Privacy Policy — PictoKit" />
+  <meta property="og:description" content="PictoKit privacy policy. No analytics, no telemetry, no accounts. All user data stays on your Mac." />
+  <meta property="og:image" content="https://pictokit.app/public/og_image.png" />
+  <meta property="og:url" content="https://pictokit.app/privacy.html" />
+  <meta property="og:site_name" content="PictoKit" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Privacy Policy — PictoKit" />
+  <meta name="twitter:description" content="No analytics, no telemetry, no accounts. All user data stays on your Mac." />
+  <meta name="twitter:image" content="https://pictokit.app/public/og_image.png" />
+
+  <link rel="canonical" href="https://pictokit.app/privacy.html" />
+  <link rel="icon" type="image/png" href="public/favicon.png" />
+  <link rel="apple-touch-icon" href="public/app-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- TelemetryDeck Analytics -->
+  <script src="https://cdn.telemetrydeck.com/websdk/telemetrydeck.min.js" data-app-id="55E41A46-A1D5-4F94-86EB-19D58E58444E"></script>
+
+  <style>
+    :root {
+      --bg-base: #171615;
+      --bg-raised: #1e1d1c;
+      --fg-primary: #d6d5d4;
+      --fg-secondary: #d6d5d4a6;
+      --fg-tertiary: #d6d5d480;
+      --accent: #60a5fa;
+      --border-soft: #d6d5d412;
+      --nav-bg-scrolled: rgba(23, 22, 21, 0.75);
+      --nav-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      --radius-lg: 12px;
+      --radius-full: 9999px;
+      --ease-out-cubic: cubic-bezier(.33, 1, .68, 1);
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      background-color: var(--bg-base);
+      color: var(--fg-primary);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    /* Top Bar */
+    .top-bar {
+      position: fixed;
+      top: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      padding: 12px 24px;
+      width: calc(100% - 32px);
+      max-width: 1100px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius-full);
+      transition:
+        background 0.3s var(--ease-out-cubic),
+        border-color 0.3s var(--ease-out-cubic),
+        box-shadow 0.3s var(--ease-out-cubic);
+    }
+
+    .top-bar.scrolled {
+      background: var(--nav-bg-scrolled);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-color: var(--border-soft);
+      box-shadow: var(--nav-shadow);
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      text-decoration: none;
+      color: var(--fg-primary);
+    }
+
+    .top-bar-left:hover { text-decoration: none; }
+
+    .top-bar-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-lg);
+    }
+
+    .top-bar-name {
+      font-size: 20px;
+      font-weight: 550;
+    }
+
+    /* Privacy Content */
+    .privacy-content {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 140px 24px 80px;
+    }
+
+    .privacy-content h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .privacy-content .last-updated {
+      font-size: 13px;
+      color: var(--fg-tertiary);
+      margin-bottom: 40px;
+    }
+
+    .privacy-content h2 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 36px;
+      margin-bottom: 12px;
+    }
+
+    .privacy-content p {
+      font-size: 15px;
+      color: var(--fg-secondary);
+      margin-bottom: 16px;
+    }
+
+    .privacy-content ul {
+      font-size: 15px;
+      color: var(--fg-secondary);
+      margin-bottom: 16px;
+      padding-left: 20px;
+    }
+
+    .privacy-content li {
+      margin-bottom: 6px;
+    }
+
+    .privacy-content a {
+      color: var(--accent);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border-soft);
+      font-size: 13px;
+      color: var(--fg-tertiary);
+    }
+
+    footer a {
+      color: var(--fg-secondary);
+      text-decoration: none;
+      transition: color 0.2s var(--ease-out-cubic);
+    }
+
+    footer a:hover {
+      color: var(--fg-primary);
+    }
+
+    @media (max-width: 600px) {
+      .top-bar {
+        top: 12px;
+        padding: 8px 16px;
+        width: calc(100% - 24px);
+      }
+
+      .top-bar-icon {
+        width: 36px;
+        height: 36px;
+      }
+
+      .top-bar-name {
+        font-size: 15px;
+      }
+
+      .privacy-content {
+        padding: 120px 16px 60px;
+      }
+
+      .privacy-content h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="top-bar">
+    <a href="index.html" class="top-bar-left">
+      <img src="public/pictokitappicon.png" alt="PictoKit icon" class="top-bar-icon" />
+      <span class="top-bar-name">PictoKit</span>
+    </a>
+  </nav>
+
+  <div class="privacy-content">
+    <h1>Privacy Policy</h1>
+    <p class="last-updated">Last Updated: May 26, 2026</p>
+
+    <p>This privacy policy applies to the PictoKit app (referred to as "Application") for macOS, created by Charles Binet ("Service Provider"). The Application is provided as a freemium service intended for use "AS IS".</p>
+
+    <h2>Information Collection and Use</h2>
+    <p>The Application does not collect, transmit, or store any personal data. Specifically:</p>
+    <ul>
+      <li>No personal information is collected or sent to any server.</li>
+      <li>No analytics, telemetry, or usage tracking is performed by the Application.</li>
+      <li>No user accounts or sign-in are required.</li>
+      <li>All user data — including favorites, recents, clipboard history, and settings — is stored locally on your Mac and never leaves your device.</li>
+    </ul>
+
+    <h2>Website Analytics</h2>
+    <p>We collect anonymous usage analytics on the pictokit.app website via TelemetryDeck. No personal data, clipboard content, IP addresses, or device identifiers are collected or stored. See <a href="https://telemetrydeck.com/privacy" target="_blank" rel="noopener">telemetrydeck.com/privacy</a> for details.</p>
+
+    <h2>Network Requests</h2>
+    <p>The Application connects to the internet solely for its core features. No personal data is transmitted during these requests:</p>
+    <ul>
+      <li><strong>Image search:</strong> When you search for photos or images, queries are sent to third-party APIs (Unsplash, Pexels, NASA Image Library, Klipy) to fetch results. Only your search terms are transmitted.</li>
+      <li><strong>Library downloads:</strong> Icon libraries are downloaded from GitHub when you choose to install them.</li>
+      <li><strong>App updates:</strong> The Application checks for updates via a Sparkle update feed hosted on pictokit.app.</li>
+    </ul>
+    <p>No browsing history, device identifiers, or personal information is included in these requests.</p>
+
+    <h2>Third Party Services</h2>
+    <p>The Application integrates with the following third-party services solely to provide image and icon search functionality:</p>
+    <ul>
+      <li><strong>Unsplash</strong> — photo search and download tracking (required by Unsplash Terms of Service)</li>
+      <li><strong>Pexels</strong> — photo search</li>
+      <li><strong>NASA Image Library</strong> — public domain image search (no API key required)</li>
+      <li><strong>Klipy</strong> — GIF, sticker, and clip search</li>
+    </ul>
+    <p>These services have their own privacy policies. The Application does not share any personal data with these services beyond the search queries you enter.</p>
+
+    <h2>Local Data Storage</h2>
+    <p>The following data is stored locally on your Mac and never transmitted:</p>
+    <ul>
+      <li>Favorited icons and images</li>
+      <li>Recently used items (auto-deleted after 3 days)</li>
+      <li>Clipboard history (limited to 20 items, auto-deleted after 3 days)</li>
+      <li>App settings and preferences</li>
+      <li>Downloaded icon libraries</li>
+      <li>Custom folder references</li>
+    </ul>
+
+    <h2>Permissions</h2>
+    <p>The Application may request Accessibility permission on macOS. This is used solely to paste selected icons and images into your currently focused application by simulating a keyboard shortcut. This permission is never used for data collection or monitoring.</p>
+
+    <h2>Children</h2>
+    <p>Since the Application does not collect any personal information from any user, it is safe for use by individuals of all ages. The Application does not knowingly solicit data from or market to children under the age of 13.</p>
+
+    <h2>Security</h2>
+    <p>The Application uses the macOS App Sandbox and Hardened Runtime to limit its access to only the permissions you explicitly grant. All locally stored data remains within the Application's sandboxed container.</p>
+
+    <h2>Changes</h2>
+    <p>This Privacy Policy may be updated from time to time. You are advised to review this page periodically for any changes. Changes are effective immediately after they are posted on this page.</p>
+
+    <h2>Contact Us</h2>
+    <p>If you have any questions or suggestions about this Privacy Policy, please contact us at:</p>
+    <p><a href="mailto:support@pictokit.app">support@pictokit.app</a></p>
+
+    <h2>Consent</h2>
+    <p>By using the Application, you consent to this Privacy Policy.</p>
+  </div>
+
+  <footer>
+    <p>
+      Created by
+      <a href="https://www.charlesbinet.com" target="_blank" rel="noopener">Charles</a>
+    </p>
+  </footer>
+
+  <script>
+    (function () {
+      var topBar = document.querySelector(".top-bar");
+      window.addEventListener("scroll", function () {
+        topBar.classList.toggle("scrolled", window.scrollY > 50);
+      });
+    })();
+  </script>
+</body>
+</html>

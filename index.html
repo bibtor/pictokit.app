@@ -1,21 +1,1037 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-color-scheme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PictoKit — Universal Icon Picker for macOS</title>
+  <meta name="description" content="The universal icon picker for macOS. Thousands of icons from Lucide, Phosphor, Heroicons, Tabler, and more — all in one floating panel." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="PictoKit — Universal Icon Picker for macOS" />
+  <meta property="og:description" content="The universal icon picker for macOS. Thousands of icons from Lucide, Phosphor, Heroicons, Tabler, and more — all in one floating panel." />
+  <meta property="og:url" content="https://pictokit.app" />
+  <meta property="og:image" content="https://pictokit.app/public/og_image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PictoKit — Universal Icon Picker for macOS" />
+  <meta name="twitter:description" content="The universal icon picker for macOS. Thousands of icons from Lucide, Phosphor, Heroicons, Tabler, and more — all in one floating panel." />
+  <meta name="twitter:image" content="https://pictokit.app/public/og_image.png" />
+
+  <meta name="theme-color" content="#171615" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)" />
+  <link rel="canonical" href="https://pictokit.app" />
+  <link rel="icon" type="image/png" href="public/favicon.png" />
+  <link rel="apple-touch-icon" href="public/app-icon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600&family=Inter:wght@400;500;550;700&display=swap" rel="stylesheet" />
+
+  <!-- TelemetryDeck Analytics -->
+  <script src="https://cdn.telemetrydeck.com/websdk/telemetrydeck.min.js" data-app-id="55E41A46-A1D5-4F94-86EB-19D58E58444E"></script>
+
   <style>
-    body { font-family: -apple-system, system-ui, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: #fafafa; color: #1a1a1a; }
-    .container { text-align: center; max-width: 480px; padding: 2rem; }
-    h1 { font-size: 2rem; margin-bottom: 0.5rem; }
-    p { color: #666; font-size: 1.1rem; line-height: 1.6; }
-    a { color: #007aff; text-decoration: none; }
+    /* ===== Base Palette ===== */
+    :root {
+      /* Odin Light */
+      --odin-light-0: #fff;
+      --odin-light-100: #fdfbfa;
+      --odin-light-200: #faf8f5;
+      --odin-light-300: #f3f0ec;
+      --odin-light-700: #d8d4cd;
+      --odin-light-1000: #271a00;
+      --odin-light-2000: #27251e;
+
+      /* Odin Dark */
+      --odin-dark-0: #000;
+      --odin-dark-100: #171615;
+      --odin-dark-200: #1e1d1c;
+      --odin-dark-300: #242322;
+      --odin-dark-400: #2a2928;
+      --odin-dark-1000: #d6d5d4;
+
+      /* Accent (Shiva-inspired blue) */
+      --accent-500: #3b82f6;
+      --accent-600: #2563eb;
+      --accent-400: #60a5fa;
+
+      /* Spacing */
+      --spacing-xs: 4px;
+      --spacing-sm: 6px;
+      --spacing-md: 8px;
+      --spacing-lg: 12px;
+      --spacing-xl: 16px;
+      --spacing-2xl: 20px;
+      --spacing-3xl: 24px;
+      --spacing-5xl: 32px;
+      --spacing-7xl: 40px;
+      --spacing-9xl: 48px;
+
+      /* Radius */
+      --radius-xs: 4px;
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-2xl: 16px;
+      --radius-full: 9999px;
+
+      /* Easing */
+      --ease-out-cubic: cubic-bezier(.33, 1, .68, 1);
+      --ease-in-out-cubic: cubic-bezier(.65, 0, .35, 1);
+
+      /* Layout */
+      --header-height: 56px;
+      --content-width: 1100px;
+      --content-narrow: 720px;
+    }
+
+    /* ===== Light Theme (default) ===== */
+    :root, [data-color-scheme="light"] {
+      color-scheme: light;
+      --bg-base: var(--odin-light-200);
+      --bg-raised: var(--odin-light-100);
+      --bg-soft: #271a0012;
+      --bg-subtle: #271a0009;
+      --bg-backdrop: #d8d4cdb3;
+      --bg-inverse: var(--odin-light-2000);
+
+      --fg-primary: var(--odin-light-2000);
+      --fg-secondary: #27251ea6;
+      --fg-tertiary: #27251e80;
+      --fg-disabled: #27251e33;
+      --fg-inverse: var(--odin-light-100);
+
+      --border-heavy: var(--odin-light-2000);
+      --border-medium: #271a0024;
+      --border-soft: #271a0012;
+
+      --accent-fg: var(--accent-600);
+      --accent-fg-hover: #1d4ed8;
+      --accent-bg: var(--accent-600);
+      --accent-bg-hover: #1d4ed8;
+
+      --shadow-overlay: #0000000d;
+      --nav-bg-scrolled: rgba(253, 251, 250, 0.75);
+      --nav-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ===== Dark Theme ===== */
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-color-scheme="light"]) {
+        color-scheme: dark;
+        --bg-base: var(--odin-dark-100);
+        --bg-raised: var(--odin-dark-200);
+        --bg-soft: #d6d5d412;
+        --bg-subtle: #d6d5d409;
+        --bg-backdrop: #171615b3;
+        --bg-inverse: var(--odin-dark-1000);
+
+        --fg-primary: var(--odin-dark-1000);
+        --fg-secondary: #d6d5d4a6;
+        --fg-tertiary: #d6d5d480;
+        --fg-disabled: #d6d5d433;
+        --fg-inverse: var(--odin-dark-100);
+
+        --border-heavy: var(--odin-dark-1000);
+        --border-medium: #d6d5d424;
+        --border-soft: #d6d5d412;
+
+        --accent-fg: var(--accent-400);
+        --accent-fg-hover: var(--accent-500);
+        --accent-bg: var(--accent-500);
+        --accent-bg-hover: var(--accent-400);
+
+        --shadow-overlay: #ffffff1a;
+        --nav-bg-scrolled: rgba(23, 22, 21, 0.75);
+        --nav-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    [data-color-scheme="dark"] {
+      color-scheme: dark;
+      --bg-base: var(--odin-dark-100);
+      --bg-raised: var(--odin-dark-200);
+      --bg-soft: #d6d5d412;
+      --bg-subtle: #d6d5d409;
+      --bg-backdrop: #171615b3;
+      --bg-inverse: var(--odin-dark-1000);
+
+      --fg-primary: var(--odin-dark-1000);
+      --fg-secondary: #d6d5d4a6;
+      --fg-tertiary: #d6d5d480;
+      --fg-disabled: #d6d5d433;
+      --fg-inverse: var(--odin-dark-100);
+
+      --border-heavy: var(--odin-dark-1000);
+      --border-medium: #d6d5d424;
+      --border-soft: #d6d5d412;
+
+      --accent-fg: var(--accent-400);
+      --accent-fg-hover: var(--accent-500);
+      --accent-bg: var(--accent-500);
+      --accent-bg-hover: var(--accent-400);
+
+      --shadow-overlay: #ffffff1a;
+      --nav-bg-scrolled: rgba(23, 22, 21, 0.75);
+      --nav-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* ===== Reset ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      border-color: var(--border-medium);
+    }
+
+    body {
+      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0;
+      background-color: var(--bg-base);
+      color: var(--fg-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: auto;
+    }
+
+    a {
+      color: var(--accent-fg);
+      text-decoration: none;
+      transition: color 0.2s var(--ease-out-cubic);
+    }
+    a:hover { color: var(--accent-fg-hover); }
+
+    /* ===== Top Bar ===== */
+    .top-bar {
+      position: fixed;
+      top: var(--spacing-5xl);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--spacing-lg) var(--spacing-3xl);
+      width: calc(100% - var(--spacing-5xl));
+      max-width: var(--content-width);
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: var(--radius-full);
+      transition:
+        background 0.3s var(--ease-out-cubic),
+        border-color 0.3s var(--ease-out-cubic),
+        box-shadow 0.3s var(--ease-out-cubic),
+        backdrop-filter 0.3s var(--ease-out-cubic);
+    }
+
+    .top-bar.scrolled {
+      background: var(--nav-bg-scrolled);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-color: var(--border-soft);
+      box-shadow: var(--nav-shadow);
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xl);
+    }
+
+    .top-bar-icon {
+      width: var(--spacing-9xl);
+      height: var(--spacing-9xl);
+      border-radius: var(--radius-lg);
+    }
+
+    .top-bar-name {
+      font-size: var(--spacing-2xl);
+      font-weight: 550;
+      color: var(--fg-primary);
+    }
+
+    /* ===== Buttons ===== */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-lg) var(--spacing-3xl);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--fg-inverse);
+      background: var(--accent-bg);
+      border: none;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s var(--ease-out-cubic);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-bg-hover);
+      color: var(--fg-inverse);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-lg) var(--spacing-3xl);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      color: #171615;
+      background: #D6D5D4;
+      border: none;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s var(--ease-out-cubic);
+    }
+
+    .btn-secondary:hover {
+      background: #ffffff;
+      color: #171615;
+    }
+
+    /* ===== Main Content ===== */
+    .main {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 160px var(--spacing-3xl) 0;
+    }
+
+    /* ===== Section Spacing ===== */
+    .section {
+      padding: 120px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--fg-primary);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--fg-secondary);
+      max-width: var(--content-narrow);
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      text-align: center;
+      margin-bottom: 0;
+      padding-bottom: 32px;
+    }
+
+    .hero h1 {
+      font-family: "Exo 2", sans-serif;
+      font-size: 39px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-bottom: var(--spacing-2xl);
+      color: #ffffff;
+    }
+
+    .hero p {
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #939291;
+      max-width: var(--content-narrow);
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+
+    /* ===== Placeholder Visual ===== */
+    .placeholder {
+      background: var(--bg-raised);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-2xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--fg-tertiary);
+      font-size: 14px;
+      overflow: hidden;
+    }
+
+    /* ===== Video Demo Section ===== */
+    .video-section {
+      padding: 8px 0;
+    }
+
+    .video-container {
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+    }
+
+    .video-container video {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-2xl);
+    }
+
+    /* ===== Libraries Carousel ===== */
+    .carousel-section {
+      padding: 100px 0 80px;
+      text-align: center;
+    }
+
+    .carousel-section h2 {
+      font-family: "Exo 2", sans-serif;
+      font-size: 36px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .carousel-section .carousel-subtitle {
+      font-size: 16px;
+      font-weight: 400;
+      color: #939291;
+      margin-bottom: 56px;
+    }
+
+    .carousel-track-wrapper {
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      overflow: hidden;
+    }
+
+    .carousel-track-wrapper::before,
+    .carousel-track-wrapper::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 120px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .carousel-track-wrapper::before {
+      left: 0;
+      background: linear-gradient(to right, #171615 0%, rgba(23, 22, 21, 0) 100%);
+    }
+
+    .carousel-track-wrapper::after {
+      right: 0;
+      background: linear-gradient(to left, #171615 0%, rgba(23, 22, 21, 0) 100%);
+    }
+
+    .carousel-track {
+      display: flex;
+      width: max-content;
+      animation: carousel-scroll 40s linear infinite;
+      position: relative;
+      z-index: 1;
+    }
+
+    .carousel-track:hover {
+      animation-play-state: paused;
+    }
+
+    .carousel-set {
+      display: flex;
+      gap: 48px;
+      padding-right: 48px;
+      flex-shrink: 0;
+    }
+
+    @keyframes carousel-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-100% / 2)); }
+    }
+
+    .carousel-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-lg);
+      flex-shrink: 0;
+      min-width: 100px;
+    }
+
+    .carousel-item img {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-lg);
+      object-fit: contain;
+    }
+
+    .carousel-item span {
+      font-size: 13px;
+      font-weight: 400;
+      color: #939291;
+      white-space: nowrap;
+    }
+
+    /* ===== Feature Showcase Sections (Icons, Images, Folders) ===== */
+    .showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .showcase-reverse {
+      direction: rtl;
+    }
+
+    .showcase-reverse > * {
+      direction: ltr;
+    }
+
+    .showcase-text {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xl);
+    }
+
+    .showcase-text h2 {
+      font-size: 36px;
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--fg-primary);
+    }
+
+    .showcase-text p {
+      font-size: 18px;
+      color: var(--fg-secondary);
+      line-height: 1.6;
+    }
+
+    .showcase-visual {
+      aspect-ratio: 4 / 3;
+      min-height: 320px;
+    }
+
+    /* ===== Libraries Section ===== */
+    .libraries-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--spacing-lg);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .library-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--spacing-md) var(--spacing-2xl);
+      background: var(--bg-raised);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-full);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--fg-primary);
+      transition: border-color 0.2s var(--ease-out-cubic);
+    }
+
+    .library-pill:hover {
+      border-color: var(--border-medium);
+    }
+
+    /* ===== Sub-features Section ===== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-2xl);
+    }
+
+    .feature-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-2xl);
+      padding: var(--spacing-5xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+      transition: border-color 0.2s var(--ease-out-cubic);
+    }
+
+    .feature-card:hover {
+      border-color: var(--border-medium);
+    }
+
+    .feature-card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-lg);
+      background: var(--bg-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-card-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--fg-secondary);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 550;
+      color: var(--fg-primary);
+    }
+
+    .feature-card p {
+      font-size: 15px;
+      color: var(--fg-secondary);
+      line-height: 1.5;
+    }
+
+    /* ===== Shortcuts Section ===== */
+    .shortcuts-section {
+      text-align: center;
+    }
+
+    .shortcuts-section h2 {
+      font-family: "Exo 2", sans-serif;
+      font-size: 36px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .shortcuts-subtitle {
+      font-size: 16px;
+      font-weight: 400;
+      color: #939291;
+      margin-bottom: 48px;
+    }
+
+    .shortcuts-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-2xl);
+    }
+
+    .shortcuts-row {
+      display: flex;
+      gap: var(--spacing-2xl);
+    }
+
+    .shortcut-card {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 32px;
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-2xl);
+      background: transparent;
+      min-height: 90px;
+    }
+
+    .shortcut-card-tall {
+      min-height: 180px;
+      align-items: center;
+      padding: 32px;
+    }
+
+    .shortcut-label {
+      font-size: 16px;
+      font-weight: 500;
+      color: #ffffff;
+      text-align: left;
+      line-height: 1.3;
+    }
+
+    .shortcut-keys {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .shortcut-keys img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .shortcut-keys-tall img {
+      height: 100px;
+    }
+
+    .shortcut-or {
+      font-size: 14px;
+      font-weight: 400;
+      color: #939291;
+      margin: 0 4px;
+    }
+
+    .shortcut-arrows {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .shortcut-arrows-row {
+      display: flex;
+      gap: 4px;
+    }
+
+    .shortcut-arrows img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      padding: var(--spacing-5xl) var(--spacing-3xl);
+      border-top: 1px solid var(--border-soft);
+      font-size: 13px;
+      color: var(--fg-tertiary);
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: var(--fg-secondary);
+      text-decoration: none;
+      transition: color 0.2s var(--ease-out-cubic);
+    }
+
+    footer a:hover {
+      color: var(--fg-primary);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--spacing-md) var(--spacing-2xl);
+      margin-bottom: var(--spacing-xl);
+      font-size: 13px;
+    }
+
+    /* ===== Scrollbar ===== */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--fg-disabled) transparent;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      .top-bar {
+        top: var(--spacing-lg);
+        padding: var(--spacing-md) var(--spacing-xl);
+        width: calc(100% - var(--spacing-3xl));
+      }
+
+      .top-bar-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: var(--radius-md);
+      }
+
+      .top-bar-name {
+        font-size: 15px;
+      }
+
+      .btn-primary, .btn-secondary {
+        font-size: 12px;
+        padding: var(--spacing-md) var(--spacing-xl);
+      }
+
+      .main {
+        padding: 120px var(--spacing-xl) 0;
+      }
+
+      .hero h1 {
+        font-size: 24px;
+        line-height: 1.15;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .section-title,
+      .showcase-text h2 {
+        font-size: 26px;
+      }
+
+      .section-subtitle,
+      .showcase-text p {
+        font-size: 16px;
+      }
+
+      .showcase {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-5xl);
+      }
+
+      .showcase-reverse {
+        direction: ltr;
+      }
+
+      .showcase-visual {
+        min-height: 240px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        padding: var(--spacing-3xl);
+      }
+
+
+      .shortcuts-row {
+        flex-direction: column;
+      }
+
+      .shortcut-card {
+        padding: 20px 24px;
+      }
+
+      .shortcut-label {
+        font-size: 18px;
+      }
+
+      .shortcut-keys img,
+      .shortcut-arrows img {
+        height: 40px;
+      }
+
+      .shortcut-keys-tall img {
+        height: 84px;
+      }
+
+      .shortcut-card-tall {
+        min-height: 140px;
+      }
+
+      .libraries-grid {
+        gap: var(--spacing-md);
+      }
+
+      .library-pill {
+        font-size: 13px;
+        padding: var(--spacing-sm) var(--spacing-xl);
+      }
+
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>PictoKit</h1>
-    <p>Universal icon picker for macOS. Coming soon.</p>
-  </div>
+
+  <!-- Top Bar -->
+  <nav class="top-bar">
+    <div class="top-bar-left">
+      <img src="public/pictokitappicon.png" alt="PictoKit icon" class="top-bar-icon" />
+      <span class="top-bar-name">PictoKit</span>
+    </div>
+    <a href="#" class="btn-secondary" id="download-btn">Download - For MacOS</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>One shortcut.<br>Thousands of icons, images, emojis...</h1>
+      <p>Icons, illustrations, GIFs, stickers, characters, and more... from the best open source libraries.<br>Search, customise, and paste into any app.</p>
+    </section>
+
+    <!-- Video Demo -->
+    <section class="video-section">
+      <div class="video-container">
+        <video autoplay loop muted playsinline>
+          <source src="public/pictokit_demo.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <!-- Libraries Carousel -->
+    <section class="carousel-section">
+      <h2>Free to use libraries</h2>
+      <p class="carousel-subtitle">Creative Commons guaranteed. Use in any public project.</p>
+      <div class="carousel-track-wrapper">
+        <div class="carousel-track">
+          <div class="carousel-set">
+            <div class="carousel-item"><img src="public/fluent.png" alt="Fluent emojis" /><span>Fluent emojis</span></div>
+            <div class="carousel-item"><img src="public/phosphor.png" alt="Phosphor icons" /><span>Phosphor icons</span></div>
+            <div class="carousel-item"><img src="public/emoji.png" alt="Emojis" /><span>Emojis</span></div>
+            <div class="carousel-item"><img src="public/unsplash.png" alt="Unsplash" /><span>Unsplash</span></div>
+            <div class="carousel-item"><img src="public/pexels.png" alt="Pexels" /><span>Pexels</span></div>
+            <div class="carousel-item"><img src="public/smithsonian.png" alt="Smithsonian" /><span>Smithsonian</span></div>
+            <div class="carousel-item"><img src="public/many.png" alt="Many Pixels icons" /><span>Many Pixels icons</span></div>
+            <div class="carousel-item"><img src="public/material.png" alt="Material Design icons" /><span>Material Design icons</span></div>
+            <div class="carousel-item"><img src="public/lucide.png" alt="Lucide" /><span>Lucide</span></div>
+            <div class="carousel-item"><img src="public/hero.png" alt="Heroicons" /><span>Heroicons</span></div>
+            <div class="carousel-item"><img src="public/tabler.png" alt="Tabler icons" /><span>Tabler icons</span></div>
+            <div class="carousel-item"><img src="public/bootstrap.png" alt="Bootstrap icons" /><span>Bootstrap icons</span></div>
+            <div class="carousel-item"><img src="public/iconoir.png" alt="Iconoir" /><span>Iconoir</span></div>
+            <div class="carousel-item"><img src="public/simple.png" alt="Simple icons" /><span>Simple icons</span></div>
+            <div class="carousel-item"><img src="public/boxicon.png" alt="Boxicons" /><span>Boxicons</span></div>
+            <div class="carousel-item"><img src="public/character.png" alt="Characters" /><span>Characters</span></div>
+            <div class="carousel-item"><img src="public/klipy.png" alt="Klipy" /><span>Klipy</span></div>
+            <div class="carousel-item"><img src="public/nasa.png" alt="NASA" /><span>NASA</span></div>
+          </div>
+          <div class="carousel-set" aria-hidden="true">
+            <div class="carousel-item"><img src="public/fluent.png" alt="Fluent emojis" /><span>Fluent emojis</span></div>
+            <div class="carousel-item"><img src="public/phosphor.png" alt="Phosphor icons" /><span>Phosphor icons</span></div>
+            <div class="carousel-item"><img src="public/emoji.png" alt="Emojis" /><span>Emojis</span></div>
+            <div class="carousel-item"><img src="public/unsplash.png" alt="Unsplash" /><span>Unsplash</span></div>
+            <div class="carousel-item"><img src="public/pexels.png" alt="Pexels" /><span>Pexels</span></div>
+            <div class="carousel-item"><img src="public/smithsonian.png" alt="Smithsonian" /><span>Smithsonian</span></div>
+            <div class="carousel-item"><img src="public/many.png" alt="Many Pixels icons" /><span>Many Pixels icons</span></div>
+            <div class="carousel-item"><img src="public/material.png" alt="Material Design icons" /><span>Material Design icons</span></div>
+            <div class="carousel-item"><img src="public/lucide.png" alt="Lucide" /><span>Lucide</span></div>
+            <div class="carousel-item"><img src="public/hero.png" alt="Heroicons" /><span>Heroicons</span></div>
+            <div class="carousel-item"><img src="public/tabler.png" alt="Tabler icons" /><span>Tabler icons</span></div>
+            <div class="carousel-item"><img src="public/bootstrap.png" alt="Bootstrap icons" /><span>Bootstrap icons</span></div>
+            <div class="carousel-item"><img src="public/iconoir.png" alt="Iconoir" /><span>Iconoir</span></div>
+            <div class="carousel-item"><img src="public/simple.png" alt="Simple icons" /><span>Simple icons</span></div>
+            <div class="carousel-item"><img src="public/boxicon.png" alt="Boxicons" /><span>Boxicons</span></div>
+            <div class="carousel-item"><img src="public/character.png" alt="Characters" /><span>Characters</span></div>
+            <div class="carousel-item"><img src="public/klipy.png" alt="Klipy" /><span>Klipy</span></div>
+            <div class="carousel-item"><img src="public/nasa.png" alt="NASA" /><span>NASA</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shortcuts Section -->
+    <section class="section shortcuts-section">
+      <h2>Shortcuts</h2>
+      <p class="shortcuts-subtitle">Speed up your workflow with fast access, search, selection and pasting.</p>
+      <div class="shortcuts-grid">
+        <!-- Row 1: Open Panel + Favourite -->
+        <div class="shortcuts-row">
+          <div class="shortcut-card">
+            <span class="shortcut-label">Open Panel</span>
+            <div class="shortcut-keys">
+              <img src="public/kb_command.png" alt="Command" />
+              <img src="public/kb_section.png" alt="§" />
+            </div>
+          </div>
+          <div class="shortcut-card">
+            <span class="shortcut-label">Favourite</span>
+            <div class="shortcut-keys">
+              <img src="public/kb_command.png" alt="Command" />
+              <img src="public/kb_d.png" alt="D" />
+            </div>
+          </div>
+        </div>
+        <!-- Row 2: Swap Library (full width) -->
+        <div class="shortcuts-row">
+          <div class="shortcut-card">
+            <span class="shortcut-label">Swap Library</span>
+            <div class="shortcut-keys">
+              <img src="public/kb_tab.png" alt="Tab" />
+              <span class="shortcut-or">OR</span>
+              <img src="public/kb_command.png" alt="Command" />
+              <img src="public/kb_3.png" alt="3" />
+            </div>
+          </div>
+        </div>
+        <!-- Row 3: Paste in focused app + Select -->
+        <div class="shortcuts-row">
+          <div class="shortcut-card shortcut-card-tall">
+            <span class="shortcut-label">Paste in<br>focused app</span>
+            <div class="shortcut-keys shortcut-keys-tall">
+              <img src="public/kb_enter.png" alt="Enter" />
+            </div>
+          </div>
+          <div class="shortcut-card shortcut-card-tall">
+            <span class="shortcut-label">Select</span>
+            <div class="shortcut-arrows">
+              <div class="shortcut-arrows-row">
+                <img src="public/kb_up.png" alt="Up" />
+              </div>
+              <div class="shortcut-arrows-row">
+                <img src="public/kb_left.png" alt="Left" />
+                <img src="public/kb_down.png" alt="Down" />
+                <img src="public/kb_right.png" alt="Right" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:support@pictokit.app">Support</a>
+    </div>
+    <p>
+      Created by
+      <a href="https://www.charlesbinet.com" target="_blank" rel="noopener">Charles</a>
+    </p>
+  </footer>
+
+  <!-- Scroll Detection + Download Tracking -->
+  <script>
+    (function () {
+      var topBar = document.querySelector(".top-bar");
+      window.addEventListener("scroll", function () {
+        topBar.classList.toggle("scrolled", window.scrollY > 50);
+      });
+
+      var dlBtn = document.getElementById("download-btn");
+      if (dlBtn) {
+        dlBtn.addEventListener("click", function () {
+          try {
+            var payload = [{
+              appID: "55E41A46-A1D5-4F94-86EB-19D58E58444E",
+              type: "downloadClicked",
+              payload: [],
+              isTestMode: location.hostname === "localhost" || location.hostname === "127.0.0.1"
+            }];
+            navigator.sendBeacon("https://nom.telemetrydeck.com/v2/", JSON.stringify(payload));
+          } catch (e) {}
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>
