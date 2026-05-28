@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PictoKit — Universal Icon Picker for macOS</title>
-  <meta name="description" content="The universal icon picker for macOS. Thousands of icons from Lucide, Phosphor, Heroicons, Tabler, and more — all in one floating panel." />
+  <title>PictoKit - Your shortcut to icons, images on macOS</title>
+  <meta name="description" content="The Raycast for visual assets. Thousands of assets from Lucide, Phosphor, Unsplash, Klipy, Emojis, and more… all in one fast-working panel." />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="PictoKit — Universal Icon Picker for macOS" />
-  <meta property="og:description" content="The universal icon picker for macOS. Thousands of icons from Lucide, Phosphor, Heroicons, Tabler, and more — all in one floating panel." />
+  <meta property="og:title" content="PictoKit - Your shortcut to icons, images on macOS" />
+  <meta property="og:description" content="The Raycast for visual assets. Thousands of assets from Lucide, Phosphor, Unsplash, Klipy, Emojis, and more… all in one fast-working panel." />
   <meta property="og:url" content="https://pictokit.app" />
-  <meta property="og:image" content="https://pictokit.app/public/og_image.png" />
+  <meta property="og:image" content="https://pictokit.app/public/preview_image.png" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="PictoKit — Universal Icon Picker for macOS" />
-  <meta name="twitter:description" content="The universal icon picker for macOS. Thousands of icons from Lucide, Phosphor, Heroicons, Tabler, and more — all in one floating panel." />
-  <meta name="twitter:image" content="https://pictokit.app/public/og_image.png" />
+  <meta name="twitter:title" content="PictoKit - Your shortcut to icons, images on macOS" />
+  <meta name="twitter:description" content="The Raycast for visual assets. Thousands of assets from Lucide, Phosphor, Unsplash, Klipy, Emojis, and more… all in one fast-working panel." />
+  <meta name="twitter:image" content="https://pictokit.app/public/preview_image.png" />
 
   <meta name="theme-color" content="#171615" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)" />
@@ -712,6 +712,123 @@
       object-fit: contain;
     }
 
+    /* ===== FAQ Section ===== */
+    .faq-section {
+      max-width: var(--content-narrow);
+      margin: 0 auto;
+      padding: 120px 0 0;
+    }
+
+    .faq-section h2 {
+      font-family: "Exo 2", sans-serif;
+      font-size: 36px;
+      font-weight: 600;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .faq-section .faq-subtitle {
+      font-size: 16px;
+      font-weight: 400;
+      color: #939291;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-lg);
+    }
+
+    .faq-item {
+      background: transparent;
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      transition:
+        background 0.4s ease,
+        border-color 0.4s ease;
+    }
+
+    .faq-item:hover {
+      background: var(--bg-raised);
+      border-color: var(--border-medium);
+    }
+
+    .faq-item.open {
+      background: var(--bg-raised);
+      border-color: var(--border-medium);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      color: var(--fg-primary);
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      gap: 16px;
+    }
+
+    .faq-chevron {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      color: var(--fg-tertiary);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      height: 0;
+      overflow: hidden;
+      transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-answer p {
+      font-size: 15px;
+      color: #939291;
+      line-height: 1.6;
+      padding: 0 24px 12px;
+    }
+
+    .faq-answer p:last-child {
+      padding-bottom: 20px;
+    }
+
+    .faq-answer ul {
+      font-size: 15px;
+      color: #939291;
+      line-height: 1.6;
+      padding: 0 24px 12px 44px;
+      list-style: disc;
+    }
+
+    .faq-answer ul:last-child {
+      padding-bottom: 20px;
+    }
+
+    .faq-answer li {
+      margin-bottom: 4px;
+    }
+
+    .faq-answer strong {
+      color: var(--fg-primary);
+      font-weight: 500;
+    }
+
     /* ===== Footer ===== */
     footer {
       text-align: center;
@@ -842,6 +959,27 @@
 
       .shortcut-card-tall {
         min-height: 140px;
+      }
+
+      .faq-section {
+        padding: 80px 0 0;
+      }
+
+      .faq-section h2 {
+        font-size: 26px;
+      }
+
+      .faq-question {
+        font-size: 15px;
+        padding: 16px 20px;
+      }
+
+      .faq-answer p {
+        padding: 0 20px 12px;
+      }
+
+      .faq-answer ul {
+        padding: 0 20px 12px 36px;
       }
 
       .libraries-grid {
@@ -994,6 +1132,65 @@
       </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <h2>Frequently asked questions</h2>
+      <p class="faq-subtitle">Everything you need to know about PictoKit.</p>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Is PictoKit free?</span>
+            <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. PictoKit is completely free to download and use. All icon libraries, search, and paste features are included at no cost.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Which macOS versions are supported?</span>
+            <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>PictoKit requires macOS 14 (Sonoma) or later. It runs natively on both Apple Silicon and Intel Macs.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Does PictoKit collect any data?</span>
+            <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>PictoKit collects no personal data. We only collect anonymous usage data such as app opens and library usage to help us improve the product. All your data — favourites, recents, settings — stays on your Mac and never leaves your device.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Which icon libraries are included?</span>
+            <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>PictoKit comes with a wide range of libraries across three categories:</p>
+            <ul>
+              <li><strong>Essentials:</strong> Emojis, Fluent Emojis, Characters</li>
+              <li><strong>Icons:</strong> Lucide, Phosphor, Heroicons, Tabler, Material Design Icons, Bootstrap Icons, Iconoir, Simple Icons, Boxicons, Many Pixels</li>
+              <li><strong>Images &amp; video:</strong> Unsplash, Pexels, NASA, Klipy, Smithsonian</li>
+            </ul>
+            <p>You can also add your own local folders as a custom source.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Can I add my own icons and images?</span>
+            <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7.5l5 5 5-5"/></svg>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. You can add any local folder to PictoKit. Your icons, logos, and images become searchable and accessible through the same shortcut.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- Footer -->
@@ -1030,6 +1227,43 @@
           } catch (e) {}
         });
       }
+      // FAQ accordion
+      var faqItems = document.querySelectorAll(".faq-item");
+
+      function closeFaq(item) {
+        var answer = item.querySelector(".faq-answer");
+        answer.style.height = answer.scrollHeight + "px";
+        requestAnimationFrame(function () {
+          answer.style.height = "0";
+        });
+        item.classList.remove("open");
+      }
+
+      function openFaq(item) {
+        var answer = item.querySelector(".faq-answer");
+        item.classList.add("open");
+        answer.style.height = answer.scrollHeight + "px";
+        answer.addEventListener("transitionend", function handler() {
+          if (item.classList.contains("open")) {
+            answer.style.height = "auto";
+          }
+          answer.removeEventListener("transitionend", handler);
+        });
+      }
+
+      faqItems.forEach(function (item) {
+        item.querySelector(".faq-question").addEventListener("click", function () {
+          var wasOpen = item.classList.contains("open");
+          faqItems.forEach(function (i) {
+            if (i !== item && i.classList.contains("open")) closeFaq(i);
+          });
+          if (wasOpen) {
+            closeFaq(item);
+          } else {
+            openFaq(item);
+          }
+        });
+      });
     })();
   </script>
 
