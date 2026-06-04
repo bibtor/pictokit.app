@@ -3,6 +3,7 @@
   "buildCommand": "",
   "installCommand": "",
   "outputDirectory": ".",
+  "cleanUrls": true,
   "headers": [
     {
       "source": "/appcast.xml",
