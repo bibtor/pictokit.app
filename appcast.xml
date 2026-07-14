@@ -3,6 +3,14 @@
     <channel>
         <title>PictoKit</title>
         <item>
+            <title>1.0.13</title>
+            <pubDate>Tue, 14 Jul 2026 11:41:55 +0200</pubDate>
+            <sparkle:version>23</sparkle:version>
+            <sparkle:shortVersionString>1.0.13</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/bibtor/pictokit-releases/releases/download/v1.0.13/PictoKit-1.0.13.dmg" length="9908542" type="application/octet-stream" sparkle:edSignature="flxYJ9bFzBksbVdZYPVL4bjD/fguv0Mn612HU4soy1dNIefFZhYk6XNz6GqYieHTeQ1KyQJDy+tsKEt62EGGAA=="/>
+        </item>
+        <item>
             <title>1.0.12</title>
             <pubDate>Sat, 13 Jun 2026 17:51:32 +0200</pubDate>
             <sparkle:version>20</sparkle:version>
@@ -17,14 +25,6 @@
             <sparkle:shortVersionString>1.0.11</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <enclosure url="https://github.com/bibtor/pictokit-releases/releases/download/v1.0.11/PictoKit-1.0.11.dmg" length="9832469" type="application/octet-stream" sparkle:edSignature="zlXu2wDHigpUr55SgpGgd7yWsiMd0Rvaue0epX1ktEm7XOHFKIpYsOcogTJUqhaCSTUplCnSW9xNlZ41HCrtDQ=="/>
-        </item>
-        <item>
-            <title>1.0.10</title>
-            <pubDate>Thu, 28 May 2026 14:17:47 +0200</pubDate>
-            <sparkle:version>18</sparkle:version>
-            <sparkle:shortVersionString>1.0.10</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/bibtor/pictokit-releases/releases/download/v1.0.10/PictoKit-1.0.10.dmg" length="9793665" type="application/octet-stream" sparkle:edSignature="JjB8QhL2jtzUN/S6nN1Vfp7v+jOx3b9/lkZ2TYbNzPA4NdNsCOGuipnWItimYZW8AA1Astm5VLNkU4v59Bb/Dw=="/>
         </item>
     </channel>
 </rss>
